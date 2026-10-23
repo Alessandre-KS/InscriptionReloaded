@@ -1,8 +1,15 @@
 import sqlite3
 import time
 import os
+import sys
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "leaderboard.db")
+# When compiled with PyInstaller, save database next to the .exe file
+if getattr(sys, 'frozen', False):
+    DB_DIR = os.path.dirname(sys.executable)
+else:
+    DB_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DB_PATH = os.path.join(DB_DIR, "leaderboard.db")
 
 _leaderboard_cache = None
 _leaderboard_cache_time = 0.0

@@ -1,14 +1,20 @@
 import os
+import sys
 import pygame
 
 # Game window dimensions
 WIDTH, HEIGHT = 960, 540
 GROUND_LEVEL = HEIGHT - 50
 
-# Base asset directory
+# Base asset directory (supports both script and PyInstaller frozen executable)
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    BASE_DIR = sys._MEIPASS
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 ASSET_DIR = os.path.join(
-    os.path.dirname(__file__),
-    "ASSETS" if os.path.exists(os.path.join(os.path.dirname(__file__), "ASSETS")) else "assets"
+    BASE_DIR,
+    "ASSETS" if os.path.exists(os.path.join(BASE_DIR, "ASSETS")) else "assets"
 )
 
 # Audio volume settings

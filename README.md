@@ -99,6 +99,16 @@ Ensure you have **Python 3.10 or higher** installed.
    python main.py
    ```
 
+### Standalone Executable (.exe)
+
+A standalone Windows executable is built in the `dist/` directory:
+- Simply double-click [`dist/InscriptionReloaded.exe`](file:///w:/Inscription%20RELOADED/dist/InscriptionReloaded.exe) to play — **no Python or library installation required**!
+- To rebuild the `.exe`:
+  ```bash
+  pip install pyinstaller
+  pyinstaller --noconfirm --onefile --windowed --icon="icon.ico" --add-data "ASSETS;ASSETS" --name "InscriptionReloaded" main.py
+  ```
+
 ---
 
 ## 🧪 Testing
